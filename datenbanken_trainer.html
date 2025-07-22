@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenbanken Trainer</title>
+  <style>
+    body {
+      background: black;
+      color: #33ff33;
+      font-family: 'Courier New', monospace;
+      padding: 1rem;
+    }
+    .terminal {
+      max-width: 800px;
+      margin: auto;
+    }
+    .section {
+      border-top: 1px solid #33ff33;
+      padding-top: 1rem;
+      margin-top: 2rem;
+    }
+    button {
+      background: transparent;
+      color: #33ff33;
+      border: 1px solid #33ff33;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      background: black;
+      color: #33ff33;
+      border: 1px solid #33ff33;
+      padding: 0.5rem;
+      font-family: monospace;
+    }
+    select {
+      background: black;
+      color: #33ff33;
+      border: 1px solid #33ff33;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h1>Datenbanken Trainer</h1>
+
+    <label for="topicSelect">Select topic:</label>
+    <select id="topicSelect">
+      <option value="sql">SQL Basics</option>
+      <option value="normalisierung">Normalization</option>
+      <option value="begriffe">Database Terms</option>
+    </select>
+
+    <div id="content" class="section"></div>
+
+    <div class="section">
+      <h2>Lernecke 💡</h2>
+      <p id="learningTip">Click a topic to see tips here.</p>
+    </div>
+
+    <div class="section">
+      <h2>📝 Eigene Notizen</h2>
+      <textarea id="notes"></textarea>
+      <br>
+      <button onclick="saveNotes()">💾 Save Notes</button>
+      <p id="saved" style="display:none;">Notes saved!</p>
+    </div>
+  </div>
+
+  <script>
+    const topics = {
+      sql: {
+        title: "SQL Basics",
+        content: "Try writing basic SQL commands: SELECT, INSERT, UPDATE, DELETE.",
+        tip: "SQL follows a specific syntax: SELECT columns FROM table WHERE condition;"
+      },
+      normalisierung: {
+        title: "Normalization",
+        content: "Understand 1NF, 2NF, 3NF.",
+        tip: "Each normal form reduces redundancy and dependency in tables."
+      },
+      begriffe: {
+        title: "Database Terms",
+        content: "Learn about primary key, foreign key, relations, entity, attribute, etc.",
+        tip: "A primary key uniquely identifies a row. A foreign key links to another table."
+      }
+    };
+
+    const select = document.getElementById('topicSelect');
+    const content = document.getElementById('content');
+    const tip = document.getElementById('learningTip');
+    const notes = document.getElementById('notes');
+    const saved = document.getElementById('saved');
+
+    function updateContent() {
+      const val = select.value;
+      content.innerHTML = `<h2>${topics[val].title}</h2><p>${topics[val].content}</p>`;
+      tip.textContent = topics[val].tip;
+    }
+
+    function saveNotes() {
+      localStorage.setItem('db_notes', notes.value);
+      saved.style.display = 'inline';
+      setTimeout(() => saved.style.display = 'none', 2000);
+    }
+
+    // Init
+    select.addEventListener('change', updateContent);
+    notes.value = localStorage.getItem('db_notes') || "";
+    updateContent();
+  </script>
+</body>
+</html>
