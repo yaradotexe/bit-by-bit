@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Subnetting Trainer</title>
+  <style>
+    body {
+      background-color: black;
+      color: #33FF33;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+    }
+    .terminal {
+      border: 2px solid #33FF33;
+      padding: 1rem;
+      max-width: 600px;
+    }
+    input, button {
+      background-color: black;
+      color: #33FF33;
+      border: 1px solid #33FF33;
+      font-family: inherit;
+      padding: 0.3rem;
+      margin-top: 0.5rem;
+    }
+    .cheat {
+      margin-top: 1rem;
+      display: none;
+    }
+    .result {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+    .score {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h2>🖥️ Subnetting Trainer</h2>
+    <div id="question">Frage wird geladen...</div>
+    <input id="answer" placeholder="Antwort eingeben" />
+    <button onclick="checkAnswer()">Antwort prüfen</button>
+    <div class="result" id="result"></div>
+    <div class="score" id="score"></div>
+    <button onclick="newQuestion()">Neue Frage</button>
+    <button onclick="toggleCheat()">Cheat Sheet anzeigen</button>
+    <button onclick="saveScore()">Speichern 💾</button>
+    <div class="cheat" id="cheat">
+      <p>🎓 Cheat Sheet:</p>
+      <ul>
+        <li>Hosts = 2^(32 - Präfix) - 2</li>
+        <li>/24 = 255.255.255.0 = 254 Hosts</li>
+        <li>/30 = 2 Hosts</li>
+        <li>Netz-ID: Alle Hostbits = 0</li>
+        <li>Broadcast: Alle Hostbits = 1</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    let current = {};
+    let punkte = parseInt(localStorage.getItem('subnetScore')) || 0;
+
+    function randomCIDR() {
+      const prefix = Math.floor(Math.random() * 8) + 24; // /24 bis /31
+      return prefix;
+    }
+
+    function calcHosts(prefix) {
+      return Math.pow(2, 32 - prefix) - 2;
+    }
+
+    function newQuestion() {
+      const prefix = randomCIDR();
+      const hosts = calcHosts(prefix);
+      current = { prefix, hosts };
+      document.getElementById("question").textContent = `Wie viele Hosts sind bei /${prefix} möglich?`;
+      document.getElementById("result").textContent = '';
+      document.getElementById("answer").value = '';
+      updateScore();
+    }
+
+    function checkAnswer() {
+      const user = parseInt(document.getElementById("answer").value);
+      if (user === current.hosts) {
+        document.getElementById("result").textContent = "✅ Richtig!";
+        punkte++;
+      } else {
+        document.getElementById("result").textContent = `❌ Falsch. Richtige Antwort: ${current.hosts}`;
+      }
+      updateScore();
+    }
+
+    function updateScore() {
+      document.getElementById("score").textContent = `🔢 Punkte: ${punkte}`;
+    }
+
+    function saveScore() {
+      localStorage.setItem('subnetScore', punkte);
+      alert("Punktestand gespeichert 💾");
+    }
+
+    function toggleCheat() {
+      const cheat = document.getElementById("cheat");
+      cheat.style.display = cheat.style.display === 'none' ? 'block' : 'none';
+    }
+
+    newQuestion();
+  </script>
+</body>
+</html>
