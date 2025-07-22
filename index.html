@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Subnetting Trainer</title>
+  <title>IT-Lernterminal</title>
   <style>
     body {
       background-color: black;
@@ -23,6 +24,9 @@
       padding: 0.3rem;
       margin-top: 0.5rem;
     }
+    .hidden {
+      display: none;
+    }
     .cheat {
       margin-top: 1rem;
       display: none;
@@ -38,24 +42,35 @@
 </head>
 <body>
   <div class="terminal">
-    <h2>🖥️ Subnetting Trainer</h2>
-    <div id="question">Frage wird geladen...</div>
-    <input id="answer" placeholder="Antwort eingeben" />
-    <button onclick="checkAnswer()">Antwort prüfen</button>
-    <div class="result" id="result"></div>
-    <div class="score" id="score"></div>
-    <button onclick="newQuestion()">Neue Frage</button>
-    <button onclick="toggleCheat()">Cheat Sheet anzeigen</button>
-    <button onclick="saveScore()">Speichern 💾</button>
-    <div class="cheat" id="cheat">
-      <p>🎓 Cheat Sheet:</p>
-      <ul>
-        <li>Hosts = 2^(32 - Präfix) - 2</li>
-        <li>/24 = 255.255.255.0 = 254 Hosts</li>
-        <li>/30 = 2 Hosts</li>
-        <li>Netz-ID: Alle Hostbits = 0</li>
-        <li>Broadcast: Alle Hostbits = 1</li>
-      </ul>
+    <div id="menu">
+      <h2>🧠 IT-LERNTERMINAL</h2>
+      <p>1. Subnetting</p>
+      <p>2. Datenbanken (bald)</p>
+      <p>3. OSI-Modell (bald)</p>
+      <input id="menuInput" placeholder="Bitte Zahl eingeben" onkeydown="handleMenuKey(event)">
+    </div>
+
+    <div id="subnetting" class="hidden">
+      <h2>🖥️ Subnetting Trainer</h2>
+      <div id="question">Frage wird geladen...</div>
+      <input id="answer" placeholder="Antwort eingeben" />
+      <button onclick="checkAnswer()">Antwort prüfen</button>
+      <div class="result" id="result"></div>
+      <div class="score" id="score"></div>
+      <button onclick="newQuestion()">Neue Frage</button>
+      <button onclick="toggleCheat()">Cheat Sheet anzeigen</button>
+      <button onclick="saveScore()">Speichern 💾</button>
+      <button onclick="backToMenu()">🔙 Zurück zum Menü</button>
+      <div class="cheat" id="cheat">
+        <p>🎓 Cheat Sheet:</p>
+        <ul>
+          <li>Hosts = 2^(32 - Präfix) - 2</li>
+          <li>/24 = 255.255.255.0 = 254 Hosts</li>
+          <li>/30 = 2 Hosts</li>
+          <li>Netz-ID: Alle Hostbits = 0</li>
+          <li>Broadcast: Alle Hostbits = 1</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -63,8 +78,21 @@
     let current = {};
     let punkte = parseInt(localStorage.getItem('subnetScore')) || 0;
 
+    function handleMenuKey(event) {
+      if (event.key === 'Enter') {
+        const choice = document.getElementById('menuInput').value;
+        if (choice === '1') {
+          document.getElementById('menu').classList.add('hidden');
+          document.getElementById('subnetting').classList.remove('hidden');
+          newQuestion();
+        } else {
+          alert('Modul noch nicht verfügbar 😢');
+        }
+      }
+    }
+
     function randomCIDR() {
-      const prefix = Math.floor(Math.random() * 8) + 24; // /24 bis /31
+      const prefix = Math.floor(Math.random() * 8) + 24;
       return prefix;
     }
 
@@ -107,7 +135,10 @@
       cheat.style.display = cheat.style.display === 'none' ? 'block' : 'none';
     }
 
-    newQuestion();
+    function backToMenu() {
+      document.getElementById('subnetting').classList.add('hidden');
+      document.getElementById('menu').classList.remove('hidden');
+    }
   </script>
 </body>
 </html>
