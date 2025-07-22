@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cybersecurity Trainer</title>
+  <style>
+    body {
+      background-color: black;
+      color: #33FF33;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    .terminal {
+      border: 2px solid #33FF33;
+      padding: 1rem;
+    }
+    input, button, textarea {
+      background-color: black;
+      color: #33FF33;
+      border: 1px solid #33FF33;
+      font-family: inherit;
+      padding: 0.4rem;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+    .result {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+    .score {
+      margin-top: 1rem;
+    }
+    .cheat {
+      margin-top: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h2>🔐 Cybersecurity Trainer</h2>
+    <div id="question">Frage wird geladen...</div>
+    <input id="answer" placeholder="Antwort eingeben" autocomplete="off" />
+    <button onclick="checkAnswer()">Antwort prüfen</button>
+    <div class="result" id="result"></div>
+    <div class="score" id="score"></div>
+    <button onclick="newQuestion()">Neue Frage</button>
+    <button onclick="toggleCheat()">Cheat Sheet anzeigen</button>
+    <button onclick="saveScore()">Speichern 💾</button>
+
+    <div class="cheat" id="cheat">
+      <p>🎓 Cheat Sheet:</p>
+      <ul>
+        <li>Phishing: Täuschungsversuch per E-Mail oder Website</li>
+        <li>Malware: Schadsoftware wie Viren, Trojaner, Ransomware</li>
+        <li>Firewall: Schutz vor unerwünschtem Netzwerkverkehr</li>
+        <li>VPN: Verschlüsselter Tunnel für sicheren Zugriff</li>
+        <li>2FA: Zwei-Faktor-Authentifizierung</li>
+        <li>Social Engineering: Psychologische Manipulation</li>
+        <li>Backup: Datensicherung</li>
+      </ul>
+    </div>
+
+    <h3>📝 Notizen</h3>
+    <textarea id="notes" placeholder="Deine Notizen hier..."></textarea>
+    <button onclick="saveNotes()">💾 Notizen speichern</button>
+    <p id="saved" style="display:none;">Notizen gespeichert!</p>
+  </div>
+
+  <script>
+    const questions = [
+      { q: "Was bedeutet 2FA?", a: "zweifaktor-authentifizierung" },
+      { q: "Was ist Phishing?", a: "täuschungsversuch" },
+      { q: "Welche Schadsoftware fordert Lösegeld?", a: "ransomware" },
+      { q: "Was schützt vor unerwünschtem Netzwerkverkehr?", a: "firewall" },
+      { q: "Was verschlüsselt eine Verbindung im Internet?", a: "vpn" },
+      { q: "Wie nennt man psychologische Manipulation?", a: "social engineering" },
+      { q: "Wie nennt man das Sichern von Daten?", a: "backup" }
+    ];
+
+    let current = {};
+    let score = parseInt(localStorage.getItem('cyberScore')) || 0;
+
+    function newQuestion() {
+      current = questions[Math.floor(Math.random() * questions.length)];
+      document.getElementById('question').textContent = current.q;
+      document.getElementById('result').textContent = '';
+      document.getElementById('answer').value = '';
+      updateScore();
+    }
+
+    function checkAnswer() {
+      let userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      if (userAnswer.includes(current.a)) {
+        document.getElementById('result').textContent = "✅ Richtig!";
+        score++;
+      } else {
+        document.getElementById('result').textContent = `❌ Falsch. Richtige Antwort enthält: ${current.a}`;
+      }
+      updateScore();
+    }
+
+    function updateScore() {
+      document.getElementById('score').textContent = `🔢 Punkte: ${score}`;
+    }
+
+    function saveScore() {
+      localStorage.setItem('cyberScore', score);
+      alert("Punktestand gespeichert 💾");
+    }
+
+    function toggleCheat() {
+      const cheat = document.getElementById('cheat');
+      cheat.style.display = cheat.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function saveNotes() {
+      const notes = document.getElementById('notes').value;
+      localStorage.setItem('cyberNotes', notes);
+      document.getElementById('saved').style.display = 'inline';
+      setTimeout(() => document.getElementById('saved').style.display = 'none', 2000);
+    }
+
+    // Lade Notizen beim Start
+    document.getElementById('notes').value = localStorage.getItem('cyberNotes') || "";
+
+    newQuestion();
+  </script>
+</body>
+</html>

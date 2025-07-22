@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>OSI Modell Trainer</title>
+  <style>
+    body {
+      background-color: black;
+      color: #33FF33;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    .terminal {
+      border: 2px solid #33FF33;
+      padding: 1rem;
+    }
+    input, button {
+      background-color: black;
+      color: #33FF33;
+      border: 1px solid #33FF33;
+      font-family: inherit;
+      padding: 0.4rem;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+    .result {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+    .score {
+      margin-top: 1rem;
+    }
+    .cheat {
+      margin-top: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h2>📡 OSI Modell Trainer</h2>
+    <div id="question">Frage wird geladen...</div>
+    <input id="answer" placeholder="Antwort eingeben" autocomplete="off" />
+    <button onclick="checkAnswer()">Antwort prüfen</button>
+    <div class="result" id="result"></div>
+    <div class="score" id="score"></div>
+    <button onclick="newQuestion()">Neue Frage</button>
+    <button onclick="toggleCheat()">Cheat Sheet anzeigen</button>
+    <button onclick="saveScore()">Speichern 💾</button>
+    <div class="cheat" id="cheat">
+      <p>🎓 Cheat Sheet:</p>
+      <ul>
+        <li>Layer 1: Physical - Kabel, Signale</li>
+        <li>Layer 2: Data Link - MAC-Adressen, Switches</li>
+        <li>Layer 3: Network - IP-Adressen, Router</li>
+        <li>Layer 4: Transport - TCP, UDP</li>
+        <li>Layer 5: Session - Sitzungsverwaltung</li>
+        <li>Layer 6: Presentation - Verschlüsselung, Übersetzung</li>
+        <li>Layer 7: Application - HTTP, FTP, DNS</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { q: "Welcher OSI Layer ist für IP-Adressen zuständig?", a: "3" },
+      { q: "Welcher Layer kümmert sich um TCP und UDP?", a: "4" },
+      { q: "Auf welchem Layer arbeitet ein Switch?", a: "2" },
+      { q: "Welche Schicht ist die Physikalische?", a: "1" },
+      { q: "HTTP gehört zu welchem Layer?", a: "7" },
+      { q: "Layer 5 heißt?", a: "session" },
+      { q: "Welche Schicht ist für Verschlüsselung zuständig?", a: "6" },
+      { q: "DNS ist auf welchem OSI Layer?", a: "7" },
+      { q: "Router arbeiten auf Layer?", a: "3" },
+      { q: "MAC-Adresse gehört zu welchem Layer?", a: "2" }
+    ];
+
+    let current = {};
+    let score = parseInt(localStorage.getItem('osiScore')) || 0;
+
+    function newQuestion() {
+      current = questions[Math.floor(Math.random() * questions.length)];
+      document.getElementById('question').textContent = current.q;
+      document.getElementById('result').textContent = '';
+      document.getElementById('answer').value = '';
+      updateScore();
+    }
+
+    function checkAnswer() {
+      let userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      if (userAnswer === current.a.toLowerCase()) {
+        document.getElementById('result').textContent = "✅ Richtig!";
+        score++;
+      } else {
+        document.getElementById('result').textContent = `❌ Falsch. Richtige Antwort: ${current.a}`;
+      }
+      updateScore();
+    }
+
+    function updateScore() {
+      document.getElementById('score').textContent = `🔢 Punkte: ${score}`;
+    }
+
+    function saveScore() {
+      localStorage.setItem('osiScore', score);
+      alert("Punktestand gespeichert 💾");
+    }
+
+    function toggleCheat() {
+      const cheat = document.getElementById('cheat');
+      cheat.style.display = cheat.style.display === 'none' ? 'block' : 'none';
+    }
+
+    newQuestion();
+  </script>
+</body>
+</html>
