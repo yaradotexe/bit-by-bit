@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bit by Bit – Subnetting Trainer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Bit by Bit – Subnetting Trainer</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="subnetting.html">🌐 Subnetting</a></li>
+        <li><a href="datenbanken.html">📊 Datenbanken</a></li>
+        <li><a href="osi.html">📡 OSI-Modell</a></li>
+        <li><a href="cybersecurity.html">🔐 IT-Sicherheit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Subnetting Trainer</h2>
+      <p>Teste dein Wissen zum Thema Subnetting und IP-Adressierung. Gib die richtige CIDR-Notation oder Subnetzmaske an und finde passende IP-Bereiche.</p>
+
+      <div id="trainer">
+        <p><strong>Frage:</strong> <span id="question">Loading...</span></p>
+        <input type="text" id="answer" placeholder="Deine Antwort hier" />
+        <button onclick="checkAnswer()">Antwort prüfen</button>
+        <p id="feedback"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bit by Bit – Yara.exe</p>
+  </footer>
+
+  <script>
+    const questions = [
+      {
+        question: "Wie lautet die Subnetzmaske für /24?",
+        answer: "255.255.255.0"
+      },
+      {
+        question: "Wie viele Hosts sind in einem /26-Netz möglich?",
+        answer: "62"
+      },
+      {
+        question: "Was ist die CIDR-Notation für die Subnetzmaske 255.255.255.192?",
+        answer: "/26"
+      },
+      {
+        question: "Wie lautet die Broadcast-Adresse für das Netz 192.168.1.0/24?",
+        answer: "192.168.1.255"
+      }
+    ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      const q = questions[current];
+      document.getElementById("question").textContent = q.question;
+      document.getElementById("answer").value = "";
+      document.getElementById("feedback").textContent = "";
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answer").value.trim();
+      const correct = questions[current].answer;
+
+      const feedback = document.getElementById("feedback");
+      if (userAnswer.toLowerCase() === correct.toLowerCase()) {
+        feedback.textContent = "✅ Richtig!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = `❌ Falsch. Die richtige Antwort ist: ${correct}`;
+        feedback.style.color = "red";
+      }
+
+      current = (current + 1) % questions.length;
+      setTimeout(loadQuestion, 2500);
+    }
+
+    window.onload = loadQuestion;
+  </script>
+</body>
+</html>
