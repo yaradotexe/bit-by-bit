@@ -1,6 +1,6 @@
 # Bit by Bit – IT-Lernterminal 🧠💻
 
-Das **Bit by Bit – IT-Lernterminal** ist eine interaktive Webseite im Retro-Terminal-Stil zum Lernen prüfungsrelevanter IT-Themen für die Ausbildung zur Fachinformatikerin für Systemintegration.
+Das **Bit by Bit – IT-Lernterminal** ist eine interaktive Webseite im Retro-Terminal-Stil zum Lernen prüfungsrelevanter IT-Themen für die Ausbildung zur Fachinformatiker:in für Systemintegration.
 
 ## 🔗 Online ansehen
 
