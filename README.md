@@ -4,7 +4,7 @@ Das **Bit by Bit – IT-Lernterminal** ist eine interaktive Webseite im Retro-Te
 
 ## 🔗 Online ansehen
 
-[➡️ Webseite öffnen](https://yaradotexe.github.io/subnetting-trainer/)
+[➡️ Webseite öffnen](https://yaradotexe.github.io/bit-by-bit)
 
 ## 📚 Inhalte
 
