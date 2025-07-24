@@ -2,7 +2,7 @@
 
 Das **Bit by Bit – IT-Lernterminal** ist eine interaktive Webseite im Retro-Terminal-Stil zum Lernen prüfungsrelevanter IT-Themen für die Ausbildung zur Fachinformatiker:in für Systemintegration.
 
-## 🔗 Online ansehen
+## Online ansehen
 
 [➡️ Webseite öffnen](https://yaradotexe.github.io/bit-by-bit)
 
