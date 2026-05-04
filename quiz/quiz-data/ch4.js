@@ -1,0 +1,90 @@
+const CH4_DATA = {
+  "title": "Lernfeld 4: Server und Betriebssysteme",
+  "priority": 4,
+  "subsections": [
+    {
+      "title": "Betriebssysteme und AD",
+      "id": "os_ad",
+      "description": "Windows vs. Linux, Active Directory, NTFS Berechtigungen, Benutzerverwaltung.",
+      "priority": "hoch",
+      "questions": [
+        { "question": "Was ist der Kern eines Betriebssystems?", "options": ["Shell", "Kernel", "GUI", "Dateisystem"], "answer": 1 },
+        { "question": "Welches Dateisystem nutzt Windows standardmäßig für Systempartitionen?", "options": ["FAT32", "NTFS", "ext4", "APFS"], "answer": 1 },
+        { "question": "Was ist die Hauptaufgabe des Active Directory (AD)?", "options": ["Virensuche", "Zentrale Verwaltung von Benutzern und Ressourcen", "Dateiversand", "Webhosting"], "answer": 1 },
+        { "question": "Was bedeutet 'Vererbung' bei NTFS-Berechtigungen?", "options": ["Unterordner übernehmen Rechte des Oberordners", "Benutzer erben Passwörter", "Löschen von Dateien", "Backup der Rechte"], "answer": 0 },
+        { "question": "Welche Berechtigung hat Vorrang bei NTFS?", "options": ["Zulassen (Allow)", "Verweigern (Deny)", "Ändern", "Lesen"], "answer": 1 },
+        { "question": "Was ist eine 'GPO' im AD-Kontext?", "options": ["Group Policy Object (Gruppenrichtlinie)", "Global Password Option", "General Port Operator", "Graphical Page Output"], "answer": 0 },
+        { "question": "Mit welchem Befehl zeigt man unter Linux den Inhalt eines Verzeichnisses an?", "options": ["dir", "ls", "cd", "list"], "answer": 1 },
+        { "question": "Was ist der Standard-Administrator-Account unter Linux?", "options": ["admin", "root", "superuser", "system"], "answer": 1 },
+        { "question": "Welches Protokoll nutzt ein PC, um eine IP für die Domänenanmeldung zu finden?", "options": ["DNS", "DHCP", "FTP", "SNMP"], "answer": 0 },
+        { "question": "Was ist eine 'OU' im Active Directory?", "options": ["Organizational Unit (Organisationseinheit)", "Open User", "Output Unit", "Original Union"], "answer": 0 },
+        { "question": "Was ist der Unterschied zwischen lokaler und zentraler Benutzerverwaltung?", "options": ["Zentral = ein Login für alle PCs (Domäne)", "Lokal = Sicherer", "Gibt keinen", "Zentral ist nur für Linux"], "answer": 0 },
+        { "question": "Welches Kommando unter Linux gibt den aktuellen Pfad aus?", "options": ["whereami", "pwd", "path", "dir"], "answer": 1 },
+        { "question": "Was bewirkt 'chmod' unter Linux?", "options": ["Ändern von Dateiberechtigungen", "Löschen von Usern", "Rechner neu starten", "Netzwerk prüfen"], "answer": 0 },
+        { "question": "Was ist ein 'Forest' im Active Directory?", "options": ["Eine Ansammlung von AD-Trees", "Ein Bildschirmschoner", "Ein abgestürzter Server", "Die physische Verkabelung"], "answer": 0 },
+        { "question": "Wofür steht 'NTFS'?", "options": ["New Technology File System", "Network Terminal File System", "Node Transport Flow System", "No Task For System"], "answer": 0 },
+        { "question": "Was ist 'Sudo' unter Linux?", "options": ["Ausführen von Befehlen mit Root-Rechten", "Ein Texteditor", "Ein Dateisystem", "Ein Spiel"], "answer": 0 },
+        { "question": "Was ist eine 'SID' unter Windows?", "options": ["Security Identifier (eindeutige ID)", "System Input Device", "Server ID", "Software Image Data"], "answer": 0 },
+        { "question": "Welche Datei enthält unter Linux die Benutzer-Accounts?", "options": ["/etc/passwd", "/etc/config", "/bin/users", "/root/list"], "answer": 0 },
+        { "question": "Was bedeutet 'Disk Quota'?", "options": ["Beschränkung des Speicherplatzes pro Benutzer", "Geschwindigkeit der Platte", "Anzahl der Partitionen", "Preise für Festplatten"], "answer": 0 },
+        { "question": "Was ist der 'Shell'-Modus?", "options": ["Textbasierte Befehlseingabe", "Ein Modus zum Stromsparen", "Der abgesicherte Modus", "Gibt es nur bei macOS"], "answer": 0 }
+      ]
+    },
+    {
+      "title": "Virtualisierung und Cloud",
+      "id": "cloud",
+      "description": "Hypervisor (Typ 1/2), Container vs. VM, Cloud-Modelle (IaaS, PaaS, SaaS).",
+      "priority": "hoch",
+      "questions": [
+        { "question": "Was ist ein 'Typ-1-Hypervisor'?", "options": ["Läuft direkt auf der Hardware (Bare Metal)", "Läuft als App im Betriebssystem", "Ist ein Cloud-Speicher", "Ist nur für Linux"], "answer": 0 },
+        { "question": "Was ist der Hauptvorteil von Virtualisierung?", "options": ["Hardware-Konsolidierung (bessere Auslastung)", "Die CPU wird schneller", "Man braucht keinen Strom mehr", "Daten werden automatisch gelöscht"], "answer": 0 },
+        { "question": "Was unterscheidet Container (z.B. Docker) von VMs?", "options": ["Container teilen sich den Host-Kernel", "VMs sind immer kleiner", "Container brauchen ein eigenes OS pro Instanz", "Gibt keinen Unterschied"], "answer": 0 },
+        { "question": "Was ist 'IaaS'?", "options": ["Infrastructure as a Service (Miete von HW/Netz)", "Internet as a Service", "Interface as a Service", "Integration as a Service"], "answer": 0 },
+        { "question": "Welches Modell ist Microsoft 365?", "options": ["IaaS", "PaaS", "SaaS (Software as a Service)", "DaaS"], "answer": 2 },
+        { "question": "Was beschreibt eine 'Private Cloud'?", "options": ["Cloud-Ressourcen nur für eine Organisation", "Internet für Privatpersonen", "Ein PC ohne Netzwerk", "Sicherer USB-Stick"], "answer": 0 },
+        { "question": "Was ist ein 'Snapshot' in der Virtualisierung?", "options": ["Ein Speicherabbild zu einem gewissen Zeitpunkt", "Ein Foto des Admins", "Ein Hardware-Defekt", "Ein kurzer Stromausfall"], "answer": 0 },
+        { "question": "Was ist 'PaaS'?", "options": ["Platform as a Service (Umgebung für Entwickler)", "Payment as a Service", "Public as a Service", "Port as a Service"], "answer": 0 },
+        { "question": "Was ist ein 'Typ-2-Hypervisor'?", "options": ["Läuft auf einem Host-Betriebssystem (z.B. VirtualBox)", "Direkt auf Hardware", "Nur in der Cloud", "Gibt es nicht"], "answer": 0 },
+        { "question": "Was bedeutet 'Skalierbarkeit' in der Cloud?", "options": ["Ressourcen können flexibel angepasst werden", "Die Cloud ist grün", "Hardware wird alle 2 Jahre gewechselt", "Preise sind immer gleich"], "answer": 0 },
+        { "question": "Was ist 'Multi-Tenancy'?", "options": ["Mehrere Kunden nutzen dieselbe Infrastruktur getrennt", "Ein Kunde hat viele Server", "Viele Admins für einen PC", "Miete wird geteilt"], "answer": 0 },
+        { "question": "Was ist der Vorteil einer 'Hybrid Cloud'?", "options": ["Kombination aus Private und Public Cloud", "Nutzung von Windkraft", "Besonders schneller Download", "Kostenloses Internet"], "answer": 0 },
+        { "question": "Was ist 'Server-Virtualisierung'?", "options": ["Abstraktion physischer Server in mehrere logische Einheiten", "Anmalen von Servergehäusen", "Abschalten von Servern", "Verkabelung von Racks"], "answer": 0 },
+        { "question": "Was ist 'Live Migration'?", "options": ["Verschieben einer VM im laufenden Betrieb", "Einzug in ein neues Büro", "Update von Windows 10 auf 11", "Backup auf Band"], "answer": 0 },
+        { "question": "Wofür steht 'SLA' im Cloud-Kontext?", "options": ["Service Level Agreement (Garantierte Verfügbarkeit)", "Software Logic Area", "Server List Access", "Storage Layer Admin"], "answer": 0 },
+        { "question": "Was ist 'On-Demand Self-Service'?", "options": ["Automatisches Buchen von Ressourcen durch den User", "Kaffeeautomat im Flur", "Reparatur durch den Admin", "Garantieanspruch"], "answer": 0 },
+        { "question": "Was ist 'Resource Pooling'?", "options": ["Gemeinsame Nutzung von HW-Ressourcen für viele User", "Schwimmen im Serverraum", "Sammeln von alten Festplatten", "Datenlöschung"], "answer": 0 },
+        { "question": "Welche Komponente verwaltet die virtuellen Maschinen?", "options": ["Hypervisor", "Router", "Dateisystem", "Grafikkarte"], "answer": 0 },
+        { "question": "Was ist der 'Host'?", "options": ["Das physische System, auf dem VMs laufen", "Die virtuelle Maschine selbst", "Der Benutzer", "Das Internet"], "answer": 0 },
+        { "question": "Was bedeutet 'Cloud Computing'?", "options": ["Bereitstellung von IT-Ressourcen über das Internet", "Rechnen bei schlechtem Wetter", "Wettervorhersage per PC", "Daten auf Disketten"], "answer": 0 }
+      ]
+    },
+    {
+      "title": "Datenschutz (DSGVO)",
+      "id": "dsgvo",
+      "description": "Personenbezogene Daten, Rechte der Betroffenen, TOMs, Anonymisierung.",
+      "priority": "sehr hoch",
+      "questions": [
+        { "question": "Was sind 'personenbezogene Daten'?", "options": ["Daten, die eine Person identifizierbar machen", "Nur der Name", "Nur die IP-Adresse", "Alle Daten der Welt"], "answer": 0 },
+        { "question": "Was bedeutet das 'Recht auf Vergessenwerden'?", "options": ["Recht auf Löschung der Daten", "Man darf seinen Namen ändern", "Der Admin darf User ignorieren", "Backup-Pflicht"], "answer": 0 },
+        { "question": "Wofür steht 'TOM'?", "options": ["Technische und Organisatorische Maßnahmen", "Total Optimization Method", "Technical Output Manager", "Terminal Operation Module"], "answer": 0 },
+        { "question": "Was ist 'Pseudonymisierung'?", "options": ["Ersetzen von Identifikationsmerkmalen durch Codes", "Vollständiges Löschen", "Ändern des Namens in der Realität", "Passwortschutz"], "answer": 0 },
+        { "question": "Wer ist für die Einhaltung des Datenschutzes verantwortlich?", "options": ["Der Verantwortliche (Geschäftsleitung)", "Nur der IT-Admin", "Die Reinigungskraft", "Der Staat"], "answer": 0 },
+        { "question": "Was ist ein 'Verarbeitungsverzeichnis'?", "options": ["Dokumentation aller Verarbeitungstätigkeiten", "Eine Liste aller Mitarbeiter", "Das Inhaltsverzeichnis des Handbuchs", "Ein Telefonbuch"], "answer": 0 },
+        { "question": "Was ist 'Privacy by Design'?", "options": ["Datenschutz schon bei der Entwicklung einplanen", "Ein hübsches Logo", "Verschlüsselung der Festplatte", "Ein Passwort für den Designer"], "answer": 0 },
+        { "question": "Welches Datum gehört zu 'besonderen Kategorien personenbezogener Daten'?", "options": ["Gesundheitsdaten", "E-Mail-Adresse", "Schuhgröße", "Lieblingsfarbe"], "answer": 0 },
+        { "question": "Wie lange darf man Daten speichern?", "options": ["Nur so lange wie für den Zweck erforderlich", "Ewig", "Genau 10 Jahre immer", "Gar nicht"], "answer": 0 },
+        { "question": "Was ist der Unterschied zwischen Anonymisierung und Pseudonymisierung?", "options": ["Anonymisierung ist unumkehrbar", "Pseudonymisierung ist sicherer", "Es gibt keinen", "Anonymisierung ist nur für Namen"], "answer": 0 },
+        { "question": "Was ist 'Zutrittskontrolle'?", "options": ["Maßnahme, Unbefugte am Betreten des Gebäudes zu hindern", "Ein Passwort für Windows", "Ein Antiviren-Scanner", "Ein Schloß am PC-Gehäuse"], "answer": 0 },
+        { "question": "Wofür steht 'DSGVO'?", "options": ["Datenschutz-Grundverordnung", "Digitaler Sicherheits-Gesamt-Verband", "Daten-Speicher-Gesetz-Vorschrift", "Deutscher Software-Gesamt-Verbund"], "answer": 0 },
+        { "question": "Was ist ein Datenschutzbeauftragter?", "options": ["Berater und Überwacher der Einhaltung des Datenschutzes", "Der Chef der IT", "Ein Polizist", "Ein Hacker"], "answer": 0 },
+        { "question": "Wann muss eine Datenpanne gemeldet werden?", "options": ["Innerhalb von 72 Stunden", "Nach einer Woche", "Gar nicht", "Sofort nach einem Jahr"], "answer": 0 },
+        { "question": "An wen müssen schwere Datenpannen gemeldet werden?", "options": ["Aufsichtsbehörde für Datenschutz", "Polizei", "Feuerwehr", "Microsoft"], "answer": 0 },
+        { "question": "Was ist die 'Informationspflicht'?", "options": ["Betroffene müssen über die Datenverarbeitung informiert werden", "Man muss alles im Internet posten", "Der Admin muss den Chef grüßen", "Radiopflicht"], "answer": 0 },
+        { "question": "Was ist 'Koppelungsverbot'?", "options": ["Dienstleistung darf nicht von unnötiger Datengabe abhängen", "Verbot von WLAN-Koppelung", "Verbot von zwei Routern", "Gibt es nicht"], "answer": 0 },
+        { "question": "Was ist ein 'Auftragsverarbeiter'?", "options": ["Externer Dienstleister, der Daten im Auftrag verarbeitet", "Ein Drucker", "Ein Programm", "Der Kunde"], "answer": 0 },
+        { "question": "Was ist 'Recht auf Datenübertragbarkeit'?", "options": ["Nutzer darf seine Daten zu anderem Anbieter mitnehmen", "USB-Stick benutzen", "E-Mail schreiben", "Daten löschen"], "answer": 0 },
+        { "question": "Was bedeutet 'Datenminimierung'?", "options": ["Nur so viele Daten wie nötig erheben", "Kleine Dateien speichern", "Daten komprimieren (Zip)", "Wenig Festplatten kaufen"], "answer": 0 }
+      ]
+    }
+  ]
+};

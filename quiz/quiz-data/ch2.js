@@ -1,0 +1,90 @@
+const CH2_DATA = {
+  "title": "Lernfeld 2: Arbeitsplatz und Beschaffung",
+  "priority": 2,
+  "subsections": [
+    {
+      "title": "Beschaffungsprozesse",
+      "id": "beschaffung",
+      "description": "Nutzwertanalyse, Angebotsvergleich, Lastenheft/Pflichtenheft, Make or Buy.",
+      "priority": "sehr hoch",
+      "questions": [
+        { "question": "Was ist das Hauptziel einer Nutzwertanalyse?", "options": ["Den günstigsten Preis finden", "Qualitative Kriterien vergleichbar machen", "Die Lieferzeit berechnen", "Den Lagerbestand prüfen"], "answer": 1 },
+        { "question": "Was steht im Lastenheft?", "options": ["Wie die Lösung technisch umgesetzt wird", "Was der Auftraggeber benötigt (Anforderungen)", "Die genaue Zeitplanung", "Das Budget des Auftragnehmers"], "answer": 1 },
+        { "question": "Wer erstellt in der Regel das Pflichtenheft?", "options": ["Der Auftraggeber", "Der Auftragnehmer", "Das Finanzamt", "Der Betriebsrat"], "answer": 1 },
+        { "question": "Was beschreibt 'Make or Buy'?", "options": ["Kaufen oder Verkaufen", "Eigenfertigung oder Fremdbezug", "Mieten oder Pachten", "Barzahlung oder Kredit"], "answer": 1 },
+        { "question": "Was sind die 'Total Cost of Ownership' (TCO)?", "options": ["Nur der Anschaffungspreis", "Gesamtkosten über den gesamten Lebenszyklus", "Die Kosten für die Entsorgung", "Die monatliche Miete"], "answer": 1 },
+        { "question": "Welches Kriterium ist quantitativ beim Angebotsvergleich?", "options": ["Qualität der Hotline", "Preis der Hardware", "Image des Herstellers", "Umweltfreundlichkeit"], "answer": 1 },
+        { "question": "Was ist ein Merkmal des Lastenhefts?", "options": ["Es ist die Basis für das Angebot", "Es enthält Code-Beispiele", "Es wird nach dem Projekt erstellt", "Es ist rechtlich bindend für die Technik"], "answer": 0 },
+        { "question": "Wann ist 'Make' (Eigenfertigung) sinnvoll?", "options": ["Bei fehlendem Fachwissen", "Zum Schutz von Kernkompetenzen", "Wenn der Markt gesättigt ist", "Wenn es billiger ist zu kaufen"], "answer": 1 },
+        { "question": "Was ist eine Gewichtung in der Nutzwertanalyse?", "options": ["Die Bedeutung eines Kriteriums in Prozent", "Das Gewicht der Hardware in kg", "Die Anzahl der Anbieter", "Die Dauer der Lieferung"], "answer": 0 },
+        { "question": "Was ist das Ergebnis einer Nutzwertanalyse?", "options": ["Ein Rangfolge der Anbieter nach Punkten", "Der Endpreis in Euro", "Ein unterschriebener Vertrag", "Eine Fehlermeldung"], "answer": 0 },
+        { "question": "Was ist ein 'quantitativer' Angebotsvergleich?", "options": ["Vergleich nach harten Zahlen (Preis, Rabatt)", "Vergleich nach weichen Faktoren (Service)", "Vergleich der Mitarbeiteranzahl", "Vergleich der Firmenfarben"], "answer": 0 },
+        { "question": "Was bedeutet 'TCO' in der IT-Beschaffung?", "options": ["Total Cost of Ownership", "Technical Center Organization", "Terminal Control Operation", "Total Cache Optimization"], "answer": 0 },
+        { "question": "Welches Dokument dient als Vorlage für das Angebot des Dienstleisters?", "options": ["Lastenheft", "Pflichtenheft", "Rechnung", "Lieferschein"], "answer": 0 },
+        { "question": "Was ist ein Argument für 'Buy' (Fremdbezug)?", "options": ["Nutzung von Spezialwissen des Marktes", "Abhängigkeit vom Lieferanten", "Hohe Fixkosten", "Geheimhaltung"], "answer": 0 },
+        { "question": "Welcher Faktor spielt bei der TCO eine Rolle, wird aber oft vergessen?", "options": ["Schulungskosten der Mitarbeiter", "Der Einkaufspreis", "Die Mehrwertsteuer", "Der Name des Verkäufers"], "answer": 0 },
+        { "question": "Was ist ein Nutzwert?", "options": ["Gewichtung mal Bewertung", "Nur die Gewichtung", "Nur der Preis", "Die Summe aller Kosten"], "answer": 0 },
+        { "question": "Was ist der Zweck eines Pflichtenhefts?", "options": ["Detaillierte technische Beschreibung der Umsetzung", "Grobe Ideensammlung", "Kostenaufstellung", "Marketingbroschüre"], "answer": 0 },
+        { "question": "Was ist eine Nutzwertanalyse?", "options": ["Ein Scoring-Modell zur Entscheidungsfindung", "Eine Bilanzaufstellung", "Ein Hardware-Test", "Eine Netzwerk-Analyse"], "answer": 0 },
+        { "question": "Was ist ein Lastenheft?", "options": ["Die Gesamtheit der Forderungen des Auftraggebers", "Die Liste der gelieferten Pakete", "Das Gewicht des LKW", "Eine Liste von Schulden"], "answer": 0 },
+        { "question": "Welcher Schritt folgt nach der Lastenhefterstellung?", "options": ["Ausschreibung/Angebotsanforderung", "Projektende", "Abnahme", "Rechnungsstellung"], "answer": 0 }
+      ]
+    },
+    {
+      "title": "Kaufmännische Kalkulation",
+      "id": "kalkulation",
+      "description": "Skonto, Rabatt, Brutto/Netto, Leasing vs. Kauf, Fixe/Variable Kosten.",
+      "priority": "hoch",
+      "questions": [
+        { "question": "Wie berechnet man den Netto-Betrag aus einem Brutto-Betrag (19% MwSt)?", "options": ["Brutto / 1,19", "Brutto * 0,19", "Brutto - 19", "Brutto * 1,19"], "answer": 0 },
+        { "question": "Was ist 'Skonto'?", "options": ["Ein Mengenrabatt", "Ein Preisnachlass bei schneller Zahlung", "Eine Versandgebühr", "Eine Steuerart"], "answer": 1 },
+        { "question": "Was sind fixe Kosten?", "options": ["Stromkosten je nach Nutzung", "Miete für das Bürogebäude", "Materialverbrauch", "Provisionen"], "answer": 1 },
+        { "question": "Was ist der Vorteil von Leasing gegenüber Kauf?", "options": ["Man ist sofort Eigentümer", "Schonung der Liquidität", "Keine Zinskosten", "Geringerer Gesamtaufwand"], "answer": 1 },
+        { "question": "Was ist der Barzahlungspreis?", "options": ["Listenpreis plus MwSt", "Zieleinkaufspreis minus Skonto", "Bruttopreis plus Versand", "Der Preis inklusive Zinsen"], "answer": 1 },
+        { "question": "Was sind variable Kosten?", "options": ["Gehälter der Festangestellten", "Fertigungsmaterial", "Lineare Abschreibung", "Versicherungsprämien"], "answer": 1 },
+        { "question": "Wie hoch ist der ermäßigte MwSt-Satz in Deutschland?", "options": ["19%", "7%", "15%", "0%"], "answer": 1 },
+        { "question": "Was bedeutet 'Break-Even-Point'?", "options": ["Gewinnschwelle (Erlöse = Kosten)", "Zeitpunkt der Insolvenz", "Höchster möglicher Gewinn", "Ende des Geschäftsjahres"], "answer": 0 },
+        { "question": "Was ist ein Rabatt?", "options": ["Nachlass bei schneller Zahlung", "Nachlass aus besonderem Anlass (z.B. Menge)", "Eine Mahngebühr", "Eine Steuergutschrift"], "answer": 1 },
+        { "question": "Welche Kosten fallen beim Kauf, aber nicht unbedingt beim Leasing an?", "options": ["Vollständige Anschaffungskosten zu Beginn", "Monatliche Raten", "Nutzungsgebühr", "Zinsen"], "answer": 0 },
+        { "question": "Was ist die Formel für den Bruttobetrag?", "options": ["Netto * 1,19", "Netto / 1,19", "Netto + 19", "Netto * 0,19"], "answer": 0 },
+        { "question": "Was ist ein 'Kalkulationszuschlag'?", "options": ["Prozentualer Aufschlag auf den Einstandspreis", "Ein Rabatt für Kunden", "Die Mehrwertsteuer", "Eine Liefergebühr"], "answer": 0 },
+        { "question": "Was ist Abschreibung (AfA)?", "options": ["Wertminderung von Anlagevermögen über die Zeit", "Bezahlung einer Rechnung", "Rabattgewährung", "Steuererhöhung"], "answer": 0 },
+        { "question": "Welche Kosten sind beim Serverbetrieb variabel?", "options": ["Stromverbrauch", "Wartungsvertrag (fixe Rate)", "Miete für das Rack", "Gehalt des Admins"], "answer": 0 },
+        { "question": "Was ist der 'Listenverkaufspreis'?", "options": ["Preis ohne Rabatte und MwSt", "Endpreis für den Kunden", "Einkaufspreis des Händlers", "Preis inklusive Skonto"], "answer": 0 },
+        { "question": "Was ist die Liquidität?", "options": ["Fähigkeit, Zahlungsverpflichtungen nachzukommen", "Der Gewinn des Unternehmens", "Die Anzahl der Mitarbeiter", "Das Lagervermögen"], "answer": 0 },
+        { "question": "Was bedeutet 'Zieleinkaufspreis'?", "options": ["Listenpreis minus Rabatt", "Listenpreis minus Skonto", "Preis inklusive Versand", "Bruttopreis"], "answer": 0 },
+        { "question": "Was ist eine Gewinnmarge?", "options": ["Differenz zwischen Verkaufspreis und Kosten", "Der Gesamtumsatz", "Die Höhe der Steuer", "Die Anzahl verkaufter Produkte"], "answer": 0 },
+        { "question": "Was ist der Unterschied zwischen Kosten und Ausgaben?", "options": ["Kosten = Werteverzehr, Ausgaben = Geldabfluss", "Es gibt keinen", "Kosten sind immer höher", "Ausgaben sind nur bar"], "answer": 0 },
+        { "question": "Was ist 'Vorsteuer'?", "options": ["MwSt, die das Unternehmen beim Einkauf zahlt", "MwSt, die der Kunde zahlt", "Eine Steuer auf den Gewinn", "Eine Gebühr beim Zoll"], "answer": 0 }
+      ]
+    },
+    {
+      "title": "Arbeitsplatz und Umwelt",
+      "id": "umwelt",
+      "description": "Ergonomie, Barrierefreiheit, Entsorgung (ElektroG), Energielabels.",
+      "priority": "mittel",
+      "questions": [
+        { "question": "Welcher Sehabstand wird für einen 24-Zoll-Monitor empfohlen?", "options": ["20-30 cm", "50-70 cm", "100-120 cm", "Egal"], "answer": 1 },
+        { "question": "Was ist ein Merkmal eines ergonomischen Bürostuhls?", "options": ["Feste Rückenlehne", "Verstellbare Lordosenstütze", "Keine Rollen", "Besonders weiches Polster"], "answer": 1 },
+        { "question": "Was regelt das ElektroG?", "options": ["Die Bezahlung von Elektrikern", "Die Rücknahme und Entsorgung von Elektrogeräten", "Den maximalen Strompreis", "Die Sicherheit von Steckdosen"], "answer": 1 },
+        { "question": "Was bedeutet 'Barrierefreiheit' am IT-Arbeitsplatz?", "options": ["Keine Passwörter benutzen", "Nutzbarkeit für Menschen mit Behinderungen", "Kostenlose Software", "Offene Bürotüren"], "answer": 1 },
+        { "question": "Welches Siegel kennzeichnet besonders umweltschonende Produkte?", "options": ["CE-Zeichen", "Blauer Engel", "Grüner Punkt", "TÜV-Siegel"], "answer": 1 },
+        { "question": "Was ist 'Green IT'?", "options": ["Grüne Gehäuse für Computer", "Ressourceneffiziente Nutzung von IT", "IT nur für Gärtnereien", "Billige Hardware aus Übersee"], "answer": 1 },
+        { "question": "Was ist die ideale Beleuchtungsstärke am Bildschirmarbeitsplatz?", "options": ["100 Lux", "500 Lux", "2000 Lux", "Völlige Dunkelheit"], "answer": 1 },
+        { "question": "Wie sollte der Monitor zur Fensterfläche stehen?", "options": ["Parallel zum Fenster (Blick ins Fenster)", "Parallel zum Fenster (Rücken zum Fenster)", "Seitlich zum Fenster (90 Grad)", "Schräg in der Ecke"], "answer": 2 },
+        { "question": "Was ist ein Energielabel?", "options": ["Kennzeichnung der Energieeffizienzklasse (A bis G)", "Ein Aufkleber mit dem Strompreis", "Die Seriennummer des Netzteils", "Ein Warnhinweis vor Hitze"], "answer": 0 },
+        { "question": "Was bedeutet 'TCO-Zertifizierung' bei Monitoren?", "options": ["Prüfsiegel für Ergonomie und Umwelt", "Gesamtkostenrechnung", "Technische Computer Organisation", "Keine Bedeutung"], "answer": 0 },
+        { "question": "Welche Entsorgung ist für alte Festplatten mit sensiblen Daten nötig?", "options": ["Hausmüll", "Zertifizierte Vernichtung (Shreddern/Degaussen)", "Wertstoffhof ohne Löschen", "Verkauf auf dem Flohmarkt"], "answer": 1 },
+        { "question": "Was ist 'Anthropometrie'?", "options": ["Lehre der menschlichen Körpermaße für Ergonomie", "Lehre der Sterne", "Lehre der Ameisen", "Softwaretestmethode"], "answer": 0 },
+        { "question": "Was ist ein 'Dynamic Sitting'?", "options": ["Aktives Ändern der Sitzposition", "Sitzen auf einem Pezziball", "Stehen während der Arbeit", "Sport im Büro"], "answer": 0 },
+        { "question": "Was bedeutet 'Software-Ergonomie'?", "options": ["Benutzerfreundlichkeit und intuitive Bedienung", "Hardwarebeschleunigung", "Stromsparfunktionen", "Farbenfrohes Design"], "answer": 0 },
+        { "question": "Welches Gesetz schützt Mitarbeiter vor Gefahren am Arbeitsplatz?", "options": ["ArbSchG (Arbeitsschutzgesetz)", "BGB", "StGB", "DSGVO"], "answer": 0 },
+        { "question": "Was ist die Aufgabe der Fachkraft für Arbeitssicherheit?", "options": ["Beratung bei der Gestaltung sicherer Arbeitsplätze", "Mitarbeiter entlassen", "Kaffee kochen", "Server patchen"], "answer": 0 },
+        { "question": "Was ist ein 'Bildschirmarbeitsplatz'?", "options": ["Arbeitsplatz mit einem Display zur Informationsdarstellung", "Nur ein Platz zum Fernsehen", "Jeder Platz mit Stromanschluss", "Ein Platz im Kino"], "answer": 0 },
+        { "question": "Was ist 'Ressourceneffizienz'?", "options": ["Weniger Material/Energie für gleichen Nutzen", "Alles wegschmeißen", "Mehr Hardware kaufen", "Langsamer arbeiten"], "answer": 0 },
+        { "question": "Was ist ein Gütesiegel?", "options": ["Bestätigung der Einhaltung bestimmter Standards", "Ein hübscher Aufkleber", "Ein Rabatt-Gutschein", "Die Unterschrift des Chefs"], "answer": 0 },
+        { "question": "Was bedeutet 'Zugänglichkeit' (Accessibility)?", "options": ["Barrierefreiheit für alle Nutzergruppen", "Türschloss aufmachen", "Schnelles Internet", "Viele Anschlüsse am PC"], "answer": 0 }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    --bg: #0a0a0a; 
+    --fg: #00e0c6;
+    --highlight: #EA549F;
+    --teal: #00e0c6;
+    --red: #ff0055;
+    --purple: #714896;
+    --selection-bg: #00e0c6;
+    --selection-fg: #0a0a0a;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* CRT EFFECTS - Only active when body has .effects-enabled */
+body.effects-enabled::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 200;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+body.effects-enabled .scanlines {
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+  background-size: 100% 2px, 3px 100%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 201;
+}
+
+body.effects-enabled::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 202;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+.scanlines {
+    display: none;
+}
+
+.terminal-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 60px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+body.effects-enabled .terminal-container {
+    text-shadow: 0 0 5px rgba(0, 224, 198, 0.5);
+}
+
+.terminal-header {
+    flex-shrink: 0;
+    z-index: 20;
+}
+
+.terminal-output {
+    flex-grow: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.terminal-output pre {
+    margin: 0;
+    padding: 0;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.2;
+    font-size: 1rem;
+}
+
+.system-msg { color: var(--fg); opacity: 0.8; }
+.error-msg { color: var(--red); font-weight: bold; }
+.success-msg { color: var(--teal); text-shadow: 0 0 10px var(--teal); }
+.highlight-msg { color: var(--highlight); }
+
+.side-by-side {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--fg);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.status-box {
+    border: 1px solid var(--fg);
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.user-mini-box {
+    border: 1px solid var(--fg);
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.terminal-input {
+    display: flex;
+    padding: 10px 0;
+    border-top: 1px solid var(--fg);
+    align-items: center;
+}
+
+.prompt {
+    color: var(--teal);
+    margin-right: 10px;
+}
+
+#command-input {
+    background: transparent;
+    border: none;
+    color: var(--fg);
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: 1.1rem;
+    outline: none;
+    caret-color: var(--teal);
+}
+
+.menu-header {
+    background: var(--fg);
+    color: var(--bg);
+    padding: 0 5px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.menu-item.selected {
+    background: var(--fg);
+    color: var(--bg);
+}
+
+/* Animations from Codepen 2 */
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15% { opacity: 0.90626; }
+  20% { opacity: 0.18128; }
+  25% { opacity: 0.83891; }
+  30% { opacity: 0.65583; }
+  35% { opacity: 0.57807; }
+  40% { opacity: 0.26559; }
+  45% { opacity: 0.84693; }
+  50% { opacity: 0.96019; }
+  55% { opacity: 0.08594; }
+  60% { opacity: 0.20313; }
+  65% { opacity: 0.71988; }
+  70% { opacity: 0.53455; }
+  75% { opacity: 0.37288; }
+  80% { opacity: 0.71428; }
+  85% { opacity: 0.70419; }
+  90% { opacity: 0.7003; }
+  95% { opacity: 0.36108; }
+  100% { opacity: 0.24387; }
+}
+
+/* Scrollbar */
+.terminal-output::-webkit-scrollbar { width: 4px; }
+.terminal-output::-webkit-scrollbar-track { background: transparent; }
+.terminal-output::-webkit-scrollbar-thumb { background: var(--fg); }

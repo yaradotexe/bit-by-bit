@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bit-by-Bit Buddy V2 | IHK AP1 Terminal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="crt">
+    <div class="scanlines"></div>
+    <div class="terminal-container">
+        <div class="terminal-header" id="terminal-header"></div>
+        <div class="terminal-output" id="terminal-output"></div>
+        <div class="terminal-input">
+            <span class="prompt">></span>
+            <input type="text" id="command-input" autofocus autocomplete="off" placeholder="Tippe einen Befehl...">
+        </div>
+    </div>
+
+    <!-- Data Chapters -->
+    <script src="quiz/quiz-data/ch1.js" defer></script>
+    <script src="quiz/quiz-data/ch2.js" defer></script>
+    <script src="quiz/quiz-data/ch3.js" defer></script>
+    <script src="quiz/quiz-data/ch4.js" defer></script>
+    <script src="quiz/quiz-data/ch5.js" defer></script>
+    <script src="quiz/quiz-data/ch6.js" defer></script>
+    <script src="quiz/quiz-data/ch7.js" defer></script>
+    
+    <!-- App Context -->
+    <script src="js/quiz-loader.js" defer></script>
+    <script src="lern-data.js" defer></script>
+    <script src="buddy-config.js" defer></script>
+    <script src="audio.js" defer></script>
+
+    <!-- Modular Logic -->
+    <script src="js/state.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/quiz.js" defer></script>
+    <script src="js/commands.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
