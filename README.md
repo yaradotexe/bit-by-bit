@@ -69,14 +69,14 @@ Schau einfach mal in die [example.md](./example.md) rein – es ist im Grunde nu
 
 ## Credits & Attributions
 
-Einige visuelle Effekte und Animationen basieren auf großartigen Code-Snippets der Community:
+Ein riesiges Dankeschön an die tollen Open-Source-Projekte und Creator, die dieses Projekt inspiriert haben:
 
-* **CRT & Flicker Effects:** Inspiriert von verschiedenen Retro-Terminal-Implementierungen auf CodePen, vorallem aber **Mack Richardson** https://codepen.io/macktropolis/pen/BobbZw
-* **Fireworks Animation:** Basierend auf der Implementierung von **TheBrutalTooth** https://codepen.io/TheBrutalTooth/pen/ExOeJGB
-* **Matrix Animation:** Basierend auf der Implementierung von **yaclive** https://codepen.io/yaclive/pen/EayLYO
-* **BIOS Boot Sequence:** Inspiriert durch **Burcica** und **Sonicrush007** https://www.youtube.com/watch?v=692Z_adAsMQ
-* **AP1-Tool:** Eine riesige Inspiration für dieses gesamte Projekt war das AP1-Tool von **C.Willam** https://ap1.cwillam.de/ 
-* **Honourable Mentions:** Dankeschön für die tollen Tools von https://www.asciiart.eu/ und https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false !
+* **CRT & Flicker Effects:** Inspiriert von verschiedenen Retro-Implementierungen, allen voran [Mack Richardson](https://codepen.io/macktropolis/pen/BobbZw).
+* **Fireworks Animation:** Basierend auf der coolen Implementierung von [TheBrutalTooth](https://codepen.io/TheBrutalTooth/pen/ExOeJGB).
+* **Matrix Animation:** Ein großes Lob an [yaclive](https://codepen.io/yaclive/pen/EayLYO) für den digitalen Regen.
+* **BIOS Boot Sequence:** Inspiriert durch die Arbeit von [Burcica und Sonicrush007](https://www.youtube.com/watch?v=692Z_adAsMQ).
+* **AP1-Tool:** Eine der größten Inspirationen für das gesamte Konzept war das [AP1-Tool von C.Willam](https://ap1.cwillam.de/).
+* **ASCII Art:** Die Dinos und Schriften wären nicht möglich ohne die Sammlungen von [asciiart.eu](https://www.asciiart.eu/) und den [TAAG-Generator von patorjk](https://patorjk.com/software/taag/).
 
 ## Technische Details (Für die Nerds)
 
