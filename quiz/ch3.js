@@ -1,4 +1,4 @@
-const CH3_DATA = {
+quizData.chapters.push({
   "title": "Lernfeld 3: Clients und Netzwerke",
   "priority": 3,
   "subsections": [
@@ -143,4 +143,4 @@ const CH3_DATA = {
       ]
     }
   ]
-};
+});

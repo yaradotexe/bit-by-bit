@@ -1,8 +1,7 @@
 // js/state.js - Bit-by-Bit State Management
 
 let userName = 'Guest';
-let userScores = {};
-let userStats = { streak: 0, lastPlayed: null, totalCorrect: 0, rank: 'Kaffee-Bring-Beauftragte:r', introSeen: false, troubleQuestions: {} };
+let userStats = { streak: 0, totalCorrect: 0, rank: 'Kaffee-Bring-Beauftragte:r', introSeen: false, troubleQuestions: {} };
 let settingsState = { effectsEnabled: false, soundEnabled: true, smartMode: false };
 let buddyMood = 'neutral';
 let firstLoad = true;
@@ -17,12 +16,13 @@ const RANKS = [
     { name: 'IHK-Legende', min: 1000 }
 ];
 
-let currentQuiz = { active: false, topicId: '', questions: [], currentQuestionIndex: 0, score: 0, currentShuffledOptions: [], currentCorrectIndex: -1 };
-let menuState = { active: false, type: 'chapters', items: [], selectedIndex: 0, parentChapter: null };
+let currentQuiz = { active: false, topicId: '', questions: [], currentQuestionIndex: 0, score: 0, currentShuffledOptions: [], currentCorrectIndex: -1, showingBatchResult: false };
+let menuState = { active: false, type: 'chapters', items: [], selectedIndex: 0 };
 let setupState = { active: false };
 let awaitingConfirmation = { active: false, action: null };
 let isBuddyWaiting = false;
 let idleTimer = null;
+let statusCallCount = 0;
 const IDLE_TIMEOUT_MS = 60000;
 
 function applySettings() {
@@ -34,7 +34,7 @@ function applySettings() {
 }
 
 function saveToLocalStorage() { 
-    localStorage.setItem('ap1_quiz_progress', JSON.stringify({ userName, userScores, userStats, settingsState })); 
+    localStorage.setItem('ap1_quiz_progress', JSON.stringify({ userName, userStats, settingsState })); 
 }
 
 function loadFromLocalStorage() {
@@ -43,7 +43,6 @@ function loadFromLocalStorage() {
         try { 
             const d = JSON.parse(saved); 
             userName = d.userName || 'Guest'; 
-            userScores = d.userScores || {}; 
             userStats = { ...userStats, ...d.userStats }; 
             if (d.settingsState) settingsState = { ...settingsState, ...d.settingsState }; 
             applySettings(); 
@@ -89,15 +88,59 @@ function getBuddyStatus() {
 }
 
 function getAccuracy() {
-    const total = currentQuiz.questions.length;
+    const total = currentQuiz.currentQuestionIndex || 0;
     if (total === 0) return 100;
     return Math.round((currentQuiz.score / total) * 100);
 }
 
 function getBibComment() {
     const accuracy = getAccuracy();
-    if (accuracy === 100) return "Perfekt. Endlich mal jemand, der nicht nur Kaffee holt.";
-    if (accuracy >= 80) return "Nicht schlecht. Fast so gut wie mein Cache-Management.";
-    if (accuracy >= 50) return "Ausbaufähig. Ein Neustart würde dir vielleicht gut tun.";
-    return "Autsch. Soll ich dir erklären, was ein Bit ist? Oder fangen wir bei Strom an?";
+
+    if (accuracy === 100) {
+        const perfect = [
+            "100%? Okay, wer von uns beiden ist hier die KI?",
+            "Perfekt. Endlich mal jemand, der nicht nur Kaffee holt.",
+            "Fehlerquote: 0. Mein Prozessor schnurrt vor Begeisterung.",
+            "Input-Qualität: Phänomenal. Du bist heute im God-Mode unterwegs."
+        ];
+        return perfect[Math.floor(Math.random() * perfect.length)];
+    }
+
+    if (accuracy >= 80) {
+        const high = [
+            "Nicht schlecht. Fast so gut wie mein Cache-Management.",
+            "Stabil. Damit kriegst du bei der IHK zumindest keinen Bluescreen.",
+            "Ordentlich! Ein paar Pakete sind verloren gegangen, aber der Kern steht.",
+            "Du bist auf der Zielgeraden. Noch ein Kaffee und du hast die 100%."
+        ];
+        return high[Math.floor(Math.random() * high.length)];
+    }
+
+    if (accuracy >= 50) {
+        const mid = [
+            "Ausbaufähig. Ein Neustart würde dir vielleicht gut tun.",
+            "Mittelmaß. Nicht furchtbar, aber mein Lüfter dreht vor Langeweile hoch.",
+            "Du hast 50% der Fragen verstanden. Die anderen 50%... reden wir nicht drüber.",
+            "Teilerfolg. Dein Wissens-Update hängt bei 70% fest. Bitte nochmal laden."
+        ];
+        return mid[Math.floor(Math.random() * mid.length)];
+    }
+
+    if (accuracy >= 20) {
+        const low = [
+            "Puh. Dein Wissen hat gerade mehr Paketverlust als ein deutsches Kupferkabel.",
+            "Soll ich dir erklären, was ein Bit ist? Oder fangen wir bei Strom an?",
+            "System-Warnung: Wissenslücken kritisch. Wir brauchen dringend ein Backup.",
+            "Das war... kreativ. Aber leider am Thema vorbei. Ganz weit vorbei."
+        ];
+        return low[Math.floor(Math.random() * low.length)];
+    }
+
+    const fail = [
+        "Error 404: Wissen nicht gefunden. Hast du heute schon geschlafen?",
+        "Autsch. Meine SSD weint bei diesem Ergebnis.",
+        "Hast du die Fragen überhaupt gelesen oder nur zufällig auf die Tasten gehauen?",
+        "Das Ergebnis ist so schlecht, ich hab es direkt nach /dev/null verschoben."
+    ];
+    return fail[Math.floor(Math.random() * fail.length)];
 }

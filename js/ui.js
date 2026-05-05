@@ -79,7 +79,7 @@ async function typeWriterOutput(message, className = 'system-msg', speed = 10) {
     terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }
 
-async function showProgressBar(duration = 2000) {
+async function showProgressBar(duration = 2500) {
     if (isSkipping) return;
     const barLength = 20;
     const line = document.createElement('pre');
@@ -268,4 +268,47 @@ async function showFireworks() {
     // Prompt while fireworks are running
     await typeWriterOutput("\n[BiB]: GENIAL! Du hast es drauf.");
     appendToOutput("Tippe /topics für die Übersicht oder Enter für das nächste Kapitel.");
+}
+
+async function showMatrix(duration = 4000) {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'matrix-canvas';
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9999';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVXYZ'.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    for (let i = 0; i < columns; i++) drops[i] = 1;
+
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00e0c6'; // Use theme teal
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+
+    const interval = setInterval(draw, 33);
+    
+    await new Promise(r => setTimeout(r, duration));
+    
+    clearInterval(interval);
+    canvas.remove();
 }

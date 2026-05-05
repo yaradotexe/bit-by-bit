@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-    --bg: #0a0a0a; 
+    --bg: #0a0a0a;
     --fg: #00e0c6;
     --highlight: #EA549F;
     --teal: #00e0c6;
@@ -26,45 +26,45 @@ body {
 
 /* CRT EFFECTS - Only active when body has .effects-enabled */
 body.effects-enabled::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 200;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 200;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
 }
 
 body.effects-enabled .scanlines {
-  display: block;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
-  background-size: 100% 2px, 3px 100%;
-  position: absolute;
-  pointer-events: none;
-  z-index: 201;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+    background-size: 100% 2px, 3px 100%;
+    position: absolute;
+    pointer-events: none;
+    z-index: 201;
 }
 
 body.effects-enabled::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(18, 16, 16, 0.1);
-  opacity: 0;
-  z-index: 202;
-  pointer-events: none;
-  animation: flicker 0.15s infinite;
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 202;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
 }
 
 .scanlines {
@@ -112,10 +112,17 @@ body.effects-enabled .terminal-container {
     font-size: 1rem;
 }
 
-.system-msg { color: var(--fg); opacity: 0.8; }
+.system-msg { color: var(--fg); opacity: 0.8; clear: both; }
+.warning-msg { color: #ffcc00; }
 .error-msg { color: var(--red); font-weight: bold; }
 .success-msg { color: var(--teal); text-shadow: 0 0 10px var(--teal); }
 .highlight-msg { color: var(--highlight); }
+
+/* Flash effect for /coffee */
+.flash-effect::after {
+    opacity: 0.4 !important;
+    background: white !important;
+}
 
 .side-by-side {
     display: flex;
@@ -150,14 +157,14 @@ body.effects-enabled .terminal-container {
 }
 
 #command-input {
-    background: transparent;
-    border: none;
-    color: var(--fg);
-    flex-grow: 1;
-    font-family: inherit;
-    font-size: 1.1rem;
-    outline: none;
-    caret-color: var(--teal);
+background: transparent;
+border: none;
+color: var(--fg);
+flex-grow: 1;
+font-family: inherit;
+font-size: 1.1rem;
+outline: none;
+caret-color: var(--teal);
 }
 
 .menu-header {
@@ -175,30 +182,89 @@ body.effects-enabled .terminal-container {
 
 /* Animations from Codepen 2 */
 @keyframes flicker {
-  0% { opacity: 0.27861; }
-  5% { opacity: 0.34769; }
-  10% { opacity: 0.23604; }
-  15% { opacity: 0.90626; }
-  20% { opacity: 0.18128; }
-  25% { opacity: 0.83891; }
-  30% { opacity: 0.65583; }
-  35% { opacity: 0.57807; }
-  40% { opacity: 0.26559; }
-  45% { opacity: 0.84693; }
-  50% { opacity: 0.96019; }
-  55% { opacity: 0.08594; }
-  60% { opacity: 0.20313; }
-  65% { opacity: 0.71988; }
-  70% { opacity: 0.53455; }
-  75% { opacity: 0.37288; }
-  80% { opacity: 0.71428; }
-  85% { opacity: 0.70419; }
-  90% { opacity: 0.7003; }
-  95% { opacity: 0.36108; }
-  100% { opacity: 0.24387; }
+    0% { opacity: 0.27861; }
+    5% { opacity: 0.34769; }
+    10% { opacity: 0.23604; }
+    15% { opacity: 0.90626; }
+    20% { opacity: 0.18128; }
+    25% { opacity: 0.83891; }
+    30% { opacity: 0.65583; }
+    35% { opacity: 0.57807; }
+    40% { opacity: 0.26559; }
+    45% { opacity: 0.84693; }
+    50% { opacity: 0.96019; }
+    55% { opacity: 0.08594; }
+    60% { opacity: 0.20313; }
+    65% { opacity: 0.71988; }
+    70% { opacity: 0.53455; }
+    75% { opacity: 0.37288; }
+    80% { opacity: 0.71428; }
+    85% { opacity: 0.70419; }
+    90% { opacity: 0.7003; }
+    95% { opacity: 0.36108; }
+    100% { opacity: 0.24387; }
 }
 
 /* Scrollbar */
-.terminal-output::-webkit-scrollbar { width: 4px; }
-.terminal-output::-webkit-scrollbar-track { background: transparent; }
-.terminal-output::-webkit-scrollbar-thumb { background: var(--fg); }
+.terminal-output::-webkit-scrollbar { width: 8px; }
+.terminal-output::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
+.terminal-output::-webkit-scrollbar-thumb {
+    background: var(--fg);
+    border-radius: 4px;
+    box-shadow: 0 0 5px var(--fg);
+}
+.terminal-output::-webkit-scrollbar-thumb:hover { background: var(--teal); }
+
+/* Firefox support */
+.terminal-output {
+    scrollbar-width: thin;
+    scrollbar-color: var(--fg) rgba(0, 0, 0, 0.3);
+}
+
+/* --- BIOS BOOT SEQUENCE ADDITIONS --- */
+
+.bios-table {
+    width: 100%;
+    border: 1px solid var(--fg);
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.bios-table td {
+    padding: 4px 12px;
+    border: 1px solid rgba(0, 224, 198, 0.3); /* Subtile Linien in Teal */
+}
+
+.bios-table .label {
+    color: var(--fg);
+    opacity: 0.7;
+}
+
+.bios-table .value {
+    color: var(--teal);
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--teal);
+}
+
+.table-header {
+    text-align: center;
+    background: var(--fg);
+    color: var(--bg);
+    font-weight: bold;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#bios-logo {
+float: right;
+text-align: left;
+color: #ffff00; /* Klassisches BIOS-Gelb für den Kontrast */
+font-size: 14px;
+line-height: 1.2;
+white-space: pre;
+margin-left: 20px;
+text-shadow: 2px 2px #000;
+}

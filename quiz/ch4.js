@@ -1,4 +1,4 @@
-const CH4_DATA = {
+quizData.chapters.push({
   "title": "Lernfeld 4: Server und Betriebssysteme",
   "priority": 4,
   "subsections": [
@@ -87,4 +87,4 @@ const CH4_DATA = {
       ]
     }
   ]
-};
+});

@@ -1,4 +1,4 @@
-const CH1_DATA = {
+quizData.chapters.push({
   "title": "Lernfeld 1: Unternehmen und Prozesse",
   "priority": 1,
   "subsections": [
@@ -115,4 +115,4 @@ const CH1_DATA = {
       ]
     }
   ]
-};
+});

@@ -14,6 +14,45 @@ const audio = {
         return true;
     },
 
+    // BIOS Beep: Kurz und schmerzlos
+    playBiosBeep: () => audio.playTone(880, 'square', 0.15, 0.05),
+
+    // Boot-Loop: Das Rattern der "Festplatte"
+    _bootLoopSource: null,
+    startBootRumble: async () => {
+        if (!audio.shouldPlay()) return;
+        initAudio();
+
+        // Wir nehmen ein weißes Rauschen und filtern es tief, damit es wie ein Lüfter/HDD klingt
+        const bufferSize = audioCtx.sampleRate * 2;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+        audio._bootLoopSource = audioCtx.createBufferSource();
+        audio._bootLoopSource.buffer = buffer;
+        audio._bootLoopSource.loop = true;
+
+        const lowpass = audioCtx.createBiquadFilter();
+        lowpass.type = 'lowpass';
+        lowpass.frequency.setValueAtTime(400, audioCtx.currentTime);
+
+        const gain = audioCtx.createGain();
+        gain.gain.value = 0.01; // Sehr dezent im Hintergrund
+
+        audio._bootLoopSource.connect(lowpass);
+        lowpass.connect(gain);
+        gain.connect(audioCtx.destination);
+        audio._bootLoopSource.start();
+    },
+
+    stopBootRumble: () => {
+        if (audio._bootLoopSource) {
+            audio._bootLoopSource.stop();
+            audio._bootLoopSource = null;
+        }
+    },
+
     playTone: (freq, type, duration, vol = 0.1) => {
         if (!audioCtx || !audio.shouldPlay()) return;
         const osc = audioCtx.createOscillator();

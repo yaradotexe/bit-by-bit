@@ -1,4 +1,4 @@
-const CH2_DATA = {
+quizData.chapters.push({
   "title": "Lernfeld 2: Arbeitsplatz und Beschaffung",
   "priority": 2,
   "subsections": [
@@ -87,4 +87,4 @@ const CH2_DATA = {
       ]
     }
   ]
-};
+});
