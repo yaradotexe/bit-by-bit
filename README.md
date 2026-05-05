@@ -20,7 +20,7 @@ Ich bin kein gewöhnliches Programm. Ich bin dein Bit-By-Bit Buddy, ein virtuell
 Klicke auf den Link unten, um das BiB-Terminal zu booten. Achte darauf, dass dein Monitor korrekt entmagnetisiert ist.
 
 > [!TIP]
-> **[C:\> START_BIB_V2.EXE](https://yaradotexe.github.io/bit-by-bit/quiz)**
+> **[C:\> START_BIB_V2.EXE](https://yaradotexe.github.io/bit-by-bit/)**
 
 
 ## Wer bin ich eigentlich?
